@@ -1,0 +1,52 @@
+#! /opt/homebrew/Cellar/icarus-verilog/12.0/bin/vvp
+:ivl_version "12.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/12.0/lib/ivl/system.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/12.0/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/12.0/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/12.0/lib/ivl/v2005_math.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/12.0/lib/ivl/va_math.vpi";
+S_0x101034f50 .scope module, "muxtest" "muxtest" 2 1;
+ .timescale 0 0;
+v0x10103a750_0 .var "A", 15 0;
+v0x10103a7f0_0 .net "F", 0 0, L_0x10103a950;  1 drivers
+v0x10103a890_0 .var "S", 3 0;
+S_0x101034020 .scope module, "mux1" "mux16to1" 2 6, 3 1 0, S_0x101034f50;
+ .timescale 0 0;
+    .port_info 0 /INPUT 16 "in";
+    .port_info 1 /INPUT 4 "sel";
+    .port_info 2 /OUTPUT 1 "out";
+v0x1010341a0_0 .net "in", 15 0, v0x10103a750_0;  1 drivers
+v0x101034270_0 .net "out", 0 0, L_0x10103a950;  alias, 1 drivers
+v0x10103a6b0_0 .net "sel", 3 0, v0x10103a890_0;  1 drivers
+L_0x10103a950 .part/v v0x10103a750_0, v0x10103a890_0, 1;
+    .scope S_0x101034f50;
+T_0 ;
+    %vpi_call 2 10 "$dumpfile", "muxtest.vcd" {0 0 0};
+    %vpi_call 2 11 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x101034f50 {0 0 0};
+    %vpi_call 2 12 "$monitor", $time, " A=%h, S=%h, F=%b", v0x10103a750_0, v0x10103a890_0, v0x10103a7f0_0 {0 0 0};
+    %delay 5, 0;
+    %pushi/vec4 16138, 0, 16;
+    %store/vec4 v0x10103a750_0, 0, 16;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v0x10103a890_0, 0, 4;
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 4;
+    %store/vec4 v0x10103a890_0, 0, 4;
+    %delay 5, 0;
+    %pushi/vec4 6, 0, 4;
+    %store/vec4 v0x10103a890_0, 0, 4;
+    %delay 5, 0;
+    %pushi/vec4 12, 0, 4;
+    %store/vec4 v0x10103a890_0, 0, 4;
+    %delay 5, 0;
+    %vpi_call 2 20 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "muxtest.v";
+    "mux16to1.v";
