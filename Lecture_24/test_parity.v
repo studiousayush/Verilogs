@@ -13,7 +13,7 @@ initial
 always  #10 clk= ~clk;
 
 initial begin
-  #2 x=0; #10 x=1; #10 x=1;#10 x=1;
+  #5 x=0; #10 x=1; #10 x=1;#10 x=1;
    #10 x=0;#10 x=1;#10 x=1;#10 x=0;
    #10 x=0;#10 x=1;#10 x=1;#10 x=0;
    #10 $finish;
