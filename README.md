@@ -11,8 +11,8 @@ The repository includes Verilog modules and testbenches that I have practiced. T
 You can compile and simulate a Verilog file using a simulator such as Icarus Verilog. For example:
 
 ```bash
-iverilog -o simulation.out your_file.v
-vvp simulation.out
+iverilog -o simulation_out_filename your_file.v tb.v
+vvp simulation_out_filename
 ```
 
 Replace `your_file.v` with the name of the Verilog file you want to run.
