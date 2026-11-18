@@ -4,7 +4,7 @@ output reg z;
 reg even_odd;    //The machine state
 parameter EVEN=0,ODD=1;
 
-always@(posedge_clk)
+always@(posedge clk)
    case(even_odd)
    EVEN:begin
      z<=x?1:0;
