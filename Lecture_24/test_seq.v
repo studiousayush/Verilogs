@@ -1,9 +1,14 @@
 module test_seq;
 
-reg x,clk,rst;
 wire z;
+reg x, clk, rst;
 
-seq_detector s1(x,clk,rst,z);
+seq_detector s1(
+    .x(x),
+    .clk(clk),
+    .rst(rst),
+    .z(z)
+);
 
 initial begin 
     $dumpfile("seq.vcd");
@@ -22,8 +27,8 @@ end
 
 initial begin
  #12 x=0; #10 x=0; #10 x=1;#10 x=1;
- #10 x=1; #10 x=0; #10 x=1; #10 x=1;
- #10 x=1; #10 x=0; #10 x=0; #10 x=1;
+ #10 x=0; #10 x=1; #10 x=1; #10 x=0;
+ #10 x=0; #10 x=1; #10 x=1; #10 x=0;
  #10 $finish;
   
 end
